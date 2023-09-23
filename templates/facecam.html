@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <style>
+        /* Reset some default browser styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply a clean and professional background color */
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Style the header with a subtle gradient */
+        header {
+            background: #1a63b0;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Give the header some depth with a subtle box shadow */
+        header:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style the video container with a slight border radius */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            margin-top: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the video element */
+        #video {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Style the "Start Attendance" button with a more prominent hover effect */
+        #startButton {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #startButton:hover {
+            background-color: #007BFF;
+            transform: scale(1.05);
+        }
+
+        /* Center the button horizontally */
+        button {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Attendance System</h1>
+    </header>
+    <div class="video-container">
+        <video id="video" autoplay></video>
+    </div>
+    <button id="startButton">Start Attendance</button>
+    <script src="facescript.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for Student Registration Portal */
+
+/* Page Background */
+body {
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+}
+
+/* Container Styles */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Style */
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Styles */
+.form-group label {
+    font-weight: bold;
+}
+
+/* Input Styles */
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* File Input Styles */
+.form-control-file {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+/* Select Styles */
+.form-control.selectpicker {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+/* Textarea Styles */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Button Style */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+/* Button Hover Style */
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Button Text Color */
+.btn-primary:focus {
+    color: #fff;
+}
+
+/* Error Message Styles (optional) */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Responsive Styles (optional) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Student Registration Portal</h1>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="profile-image">Upload Profile Image</label>
+                <input type="file" class="form-control-file" id="profile-image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <input type="text" class="form-control" id="class" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="caste">Caste</label>
+                <input type="text" class="form-control" id="caste" required>
+            </div>
+            <div class="form-group">
+                <label for="block">Block</label>
+                <input type="text" class="form-control" id="block" required>
+            </div>
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" class="form-control" id="district" required>
+            </div>
+            <div class="form-group">
+                <label for="school-name">School Name</label>
+                <input type="text" class="form-control" id="school-name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="registration.js"></script>
+</body>
+</html>
