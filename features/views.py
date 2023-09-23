@@ -24,3 +24,18 @@ def login2(request):
         return render(request,"login2.html",{"error" : True})
     
     return render(request,"index.html")
+
+def home(request):
+    return render(request,"index.html")
+def about(request):
+    return render(request,"about.html")
+def courses(request):
+    return render(request,"courses.html")
+def train(request):
+    return render(request,"trainers.html")
+def events(request):
+    return render(request,"events.html")
+def contact(request):
+    return render(request,"contact.html")
+def data(request):
+    return render(request,"dataanalysis.html")
