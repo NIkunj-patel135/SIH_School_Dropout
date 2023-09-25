@@ -3,160 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration Portal</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document Upload</title>
     <style>
-        /* Custom CSS for Student Registration Portal */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Page Background */
-body {
-    background-color: #f8f8f8;
-    font-family: Arial, sans-serif;
-}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
-/* Container Styles */
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
 
-/* Heading Style */
-h1 {
-    color: #333;
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+        form {
+            margin-top: 20px;
+        }
 
-/* Form Styles */
-.form-group label {
-    font-weight: bold;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
 
-/* Input Styles */
-.form-control {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-}
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-/* File Input Styles */
-.form-control-file {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #fff;
-}
+        input[type="file"] {
+            padding: 10px;
+        }
 
-/* Select Styles */
-.form-control.selectpicker {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #fff;
-}
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-/* Textarea Styles */
-textarea.form-control {
-    resize: vertical;
-}
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
-/* Button Style */
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
+        .download-section {
+            text-align: center;
+            margin-top: 30px;
+        }
 
-/* Button Hover Style */
-.btn-primary:hover {
-    background-color: #0056b3;
-}
+        .download-link {
+            font-size: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
 
-/* Button Text Color */
-.btn-primary:focus {
-    color: #fff;
-}
-
-/* Error Message Styles (optional) */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* Responsive Styles (optional) */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 24px;
-    }
-}
-
+        .download-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Student Registration Portal</h1>
-        <form id="registration-form">
-            <div class="form-group">
-                <label for="profile-image">Upload Profile Image</label>
-                <input type="file" class="form-control-file" id="profile-image" accept="image/*" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="class">Class</label>
-                <input type="text" class="form-control" id="class" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" required>
-            </div>
-            <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" required>
-            </div>
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select class="form-control" id="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <textarea class="form-control" id="address" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="caste">Caste</label>
-                <input type="text" class="form-control" id="caste" required>
-            </div>
-            <div class="form-group">
-                <label for="block">Block</label>
-                <input type="text" class="form-control" id="block" required>
-            </div>
-            <div class="form-group">
-                <label for="district">District</label>
-                <input type="text" class="form-control" id="district" required>
-            </div>
-            <div class="form-group">
-                <label for="school-name">School Name</label>
-                <input type="text" class="form-control" id="school-name" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+    <div class="container">
+        <h1>Document Upload</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="schoolName">Principal Name:</label>
+            <input type="text" id="principalname" name="principalname" required>
+            
+            <label for="schoolName">School Name:</label>
+            <input type="text" id="schoolName" name="schoolName" required>
 
-    <script src="registration.js"></script>
+            <label for="schoolRegion">School Region:</label>
+            <input type="text" id="schoolRegion" name="schoolRegion" required>
+
+            <label for="schoolDistrict">School District:</label>
+            <input type="text" id="schoolDistrict" name="schoolDistrict" required>
+
+            <label for="excelFile">Upload Excel Sheet:&nbsp;<a class="download-link" href="demo_excel_sheet.xlsx" download>{ Download Demo Excel Sheet }</a></label>
+            <input type="file" id="excelFile" name="excelFile" accept=".xlsx, .xls" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+    <script>
+        // JavaScript code for form validation and submission can be added here.
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            // Add validation logic here if needed
+            // You can use JavaScript to check file type, size, or other custom validation
+            // You can also use AJAX to submit the form data to a server for processing
+
+            // Prevent the default form submission for this example
+            event.preventDefault();
+        });
+    </script>
 </body>
 </html>
+
+

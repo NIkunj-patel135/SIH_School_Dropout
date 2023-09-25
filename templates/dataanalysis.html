@@ -35,19 +35,77 @@
         #line-chart {
             margin-top: 20px;
         }
+        .school-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .school-info label {
+            font-weight: normal;
+            margin-right: 10px;
+        }
+        .school-info input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+        }
+       
+    /* ... (your existing CSS rules) ... */
+
+    #submit-button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #submit-button:hover {
+        background-color: #0056b3;
+    }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Data Analysis Dashboard</h1>
+        <div class="school-info">
+        </div>
+        <br><br>
+        <label for="school-select">Select School:</label>
+        <select id="school-select">
+            <option value="#">Select School</option>
+            <option value="school1">School 1</option>
+            <option value="school2">School 2</option>
+            <option value="school3">School 3</option>
+            <option value="school4">School 4</option>
+            <option value="school5">School 5</option>
+        </select>
+
+        <!-- District Options -->
+        <label for="district-select">Select District:</label>
+        <select id="district-select">
+            <option value="#">Select District</option>
+            <option value="district1">District 1</option>
+            <option value="district2">District 2</option>
+            <option value="district3">District 3</option>
+            <option value="district4">District 4</option>
+            <option value="district5">District 5</option>
+        </select>
         <label for="category-select">Select Category:</label>
         <select id="category-select">
+            <option value="#">Select</option>
             <option value="caste">Caste</option>
             <option value="gender">Gender</option>
-            <option value="age">Age</option>
+            <option value="age">Age / Std</option>
             <option value="school">School</option>
             <option value="area">Area</option>
         </select>
+
+        <!-- Submit Button -->
+        <button id="submit-button">Submit</button>
         <canvas id="line-chart" width="400" height="200"></canvas>
     </div>
 

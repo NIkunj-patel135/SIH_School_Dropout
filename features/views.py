@@ -39,3 +39,7 @@ def contact(request):
     return render(request,"contact.html")
 def data(request):
     return render(request,"dataanalysis.html")
+def dropout(request):
+    return render(request,"dropout_analysis.html")
+def stud_reg(request):
+    return render(request,"student_registration.html")
