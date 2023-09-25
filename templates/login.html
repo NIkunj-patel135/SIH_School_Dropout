@@ -52,6 +52,11 @@ img.avatar {
   margin-right: 500px;
   
 }
+a {
+  font-size: 0.7rem;
+  text-decoration: none;
+  color:grey;
+}
 
 span.psw {
   float: right;
@@ -80,7 +85,7 @@ span.psw {
       Invalid Creditials! Enter Again
     </div>
     {% endif %}
-    <img src="{% static 'assets/img/govt. of india.jpg' %}" alt="Avatar" class="avatar">
+    <img src="{% static 'assets/img/Gujrat Govt..png' %}" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
@@ -94,13 +99,9 @@ span.psw {
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
+    <span class="psw"><a href="#">Forgot password?</a></span>
   </div>
 
-  <div class="container" style="background-color:white">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
 
 </body>
 </html>
