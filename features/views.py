@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import user_info
+from .models import user_info,school_dropout_data
+
+
+
 
 # Create your views here.
 def index(request):
@@ -48,3 +51,6 @@ def dropout(request):
     return render(request,"dropout_analysis.html")
 def stud_reg(request):
     return render(request,"student_registration.html")
+
+
+
