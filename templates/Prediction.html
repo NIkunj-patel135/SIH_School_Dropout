@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropout Prediction Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #chart-container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dropout Prediction Analysis</h1>
+    </header>
+    
+    <div id="chart-container">
+        <canvas id="line-chart"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        // Sample data (replace with your data)
+        const studentData = {
+            labels: ["Semester 1", "Semester 2", "Semester 3", "Semester 4", "Semester 5", "Semester 6"],
+            datasets: [
+                {
+                    label: "Dropout Prediction",
+                    data: [10, 15, 8, 12, 6, 18], // Replace with your data
+                    borderColor: "blue",
+                    fill: false,
+                }
+            ]
+        };
+
+        // Create a line chart
+        const ctx = document.getElementById('line-chart').getContext('2d');
+        const lineChart = new Chart(ctx, {
+            type: 'line',
+            data: studentData,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Semesters',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Prediction',
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
