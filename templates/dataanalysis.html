@@ -75,17 +75,26 @@
         </div>
         <br><br>
         <label for="school-select">Select School:</label>
-        <select id="school-select">
-            <option value="#">Select School</option>
+        <select data-number="{{ drop_out_number }}" id="school-select">
+            <option>Select School</option>
             {% for scName in school_names %}
                 <option value="{{ scName }}">{{ scName }}</option>
+                
             {% endfor %}
         </select>
+
+
+        <select style="display: none;" id="drop-number">
+            {% for number in drop_out_number %}
+                <option value="{{ number }}" style="display: none;">{{ number }}</option>
+            {% endfor %}
+        </select>
+
 
         <!-- District Options -->
         <label for="district-select">Select District:</label>
         <select id="district-select">
-            <option value="#">Select District</option>
+            <option value="*">Select District</option>
             {% for districtNames in district_names %}
                 <option value="{{ districtNames }}">{{ districtNames }}</option>
             {% endfor %}
@@ -106,7 +115,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script data-username = "{{ drop_out_number }}">
+    <script data-number = "{{ drop_out_number }}">
         
         
         var schoolNames = [];
@@ -116,8 +125,9 @@
         
         var temp_names = document.getElementById("school-select");
         var temp_names2 = document.getElementById("district-select");
-        
-        
+        var temp_num = document.getElementById("drop-number");
+        var submit_button = document.getElementById("submit-button");
+
 
         for (let i = 1; i<temp_names.length ; i++) {
             schoolNames.push(temp_names[i].value);
@@ -126,21 +136,45 @@
         for (let i = 1; i<temp_names2.length ; i++) {
             districtNames.push(temp_names2[i].value);
         }
-            
+
+        for (let index = 0; index < temp_num.length; index++) {
+            drop_out_number.push(parseInt(temp_num[index].value))            
+        }
+
+
+
+        data = submit_button.addEventListener("click",myFun(schoolNames,districtNames,drop_out_number));
+
+        function myFun(schoolNames,tempDistrict,temp_drop_out_number) {
+            var district_select = document.getElementById("district-select").value;
+            var school_select = document.getElementById("school-select").value;
+            var schoolNames = [];
+
+            // for(let i = 0; i<tempNames.length ; i++) {
+            //     if(tempNames[i] == ) {}
+            // }
+
+            return {
+            labels: schoolNames,
+            datasets: [{
+                label: "Data Analysis",
+                data: drop_out_number, // 
+                borderColor: "rgba(75, 192, 192, 1)",
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                fill: true,
+            }]
+            }
+        }
+
+        
+        console.log(drop_out_number)
         
 
         const data = {
-<<<<<<< HEAD
-            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"], // school names
+            labels: schoolNames,
             datasets: [{
                 label: "Data Analysis",
-                data: [12, 19, 33, 5, 2], // per school data
-=======
-            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5","@#","543","543","5435","78954"],
-            datasets: [{
-                label: "Data Analysis",
-                data: [12, 15, 3, 5, 20,23,54,2,4,54,3], // Replace with your data
->>>>>>> origin
+                data: drop_out_number, // 
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: true,
