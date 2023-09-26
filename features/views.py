@@ -30,7 +30,7 @@ def login_helper(request):
     if( not user_info.objects.filter( user_name = userName , password = passWord ).exists() ):
         return render(request,"login.html",{"error" : True})
     
-    return render(request,"index.html")
+    return render(request,"index.html",{"login":True})
 
 def home(request):
     return render(request,"index.html")

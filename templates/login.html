@@ -73,11 +73,31 @@ span.psw {
      width: 100%;
   }
 }
+
+.alert.alert-danger {
+  background-color: #f8d7da; /* Background color for danger alerts */
+  border-color: #f5c6cb; /* Border color for danger alerts */
+  color: #721c24; /* Text color for danger alerts */
+  padding: 15px; /* Padding around the content */
+  border-radius: 4px; /* Rounded corners for the alert */
+  margin-bottom: 15px; /* Spacing between alerts */
+}
+
+.alert.alert-danger strong {
+  font-weight: bold; /* Make text within <strong> elements bold */
+}
+
+/* Additional styles for links within the alert */
+.alert.alert-danger a {
+  color: #721c24; /* Link color */
+  text-decoration: underline; /* Underline links */
+}
+
 </style>
 </head>
 <body>
 
-<form method="post" action="login">
+<form method="post" action="login.html">
   {% csrf_token %}
   <div class="imgcontainer">
     {% if error %}
