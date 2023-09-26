@@ -12,6 +12,8 @@ urlpatterns = [
     path('trainers.html',views.train,name="train"),
     path('events.html',views.events,name='event'),
     path('dropout_analysis.html',views.dropout,name="dropout"),
-    path('student_registration.html',views.stud_reg,name="student_registration")
+    path('student_registration.html',views.stud_reg,name="student_registration"),
+    path('Scheme.html',views.scheme,name="scheme"),
+    path('Pie.html',views.pieChart,name="pie_chart")
 ]
 

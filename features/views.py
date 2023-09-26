@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import user_info,school_dropout_data
+from .models import user_info,school_dropout_data,Scheme_Table
 
 
 
@@ -32,6 +32,26 @@ def login_helper(request):
     
     return render(request,"index.html",{"login":True})
 
+def pieChart(request):
+    SchoolId = request.POST["school-id"]
+    PrincipalId = request.POST["principal_id"]
+    EducationNum = request.POST["no_of_students_ed"]
+    EconomicNum = request.POST["no_of_students_eco"]
+    MedicalNum = request.POST["no_of_students_med"]
+
+    temp = Scheme_Table(schoolId =SchoolId, principalId = PrincipalId, education_num = EducationNum, economic_num = EconomicNum, medical_num = MedicalNum)
+    temp.save()
+
+
+    content = {
+        'school':SchoolId,
+        'education':EducationNum,
+        'economic':EconomicNum,
+        'medical':MedicalNum
+    }
+
+    return render(request,"Pie_chart.html",content)
+
 def home(request):
     return render(request,"index.html")
 
@@ -52,6 +72,9 @@ def events(request):
 
 def contact(request):
     return render(request,"contact.html")
+
+def scheme(request):
+    return render(request,"Scheme.html")
 
 
 def data(request):

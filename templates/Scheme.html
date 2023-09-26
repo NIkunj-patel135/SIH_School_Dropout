@@ -36,7 +36,7 @@
             font-weight: bold;
         }
 
-        input[type="text"], input[type="file"] {
+        input[type="text"], input[type="file"], input[type="number"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
@@ -61,6 +61,15 @@
 
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
         }
 
         .download-section {
@@ -118,9 +127,10 @@
 <body>
     <div class="container">
         <h1>Document Upload</h1>
-        <form id="uploadForm" enctype="multipart/form-data">
+        <form action="Pie.html" method="post">
+            {% csrf_token %}
             <label for="schoolName">School ID :</label>
-            <input type="text" id="school id" name="school id" required>
+            <input type="text" id="school id" name="school-id" required>
 
             <label for="schoolName">School name :</label>
             <input type="text" id="school_name" name="school_name" required>
@@ -134,58 +144,40 @@
             <label for="schoolName">Principal Name:</label>
             <input type="text" id="principalname" name="principalname" required>
 
-            <label for="schoolName">Student ID:</label>
-            <input type="text" id="student_id" name="student_id" required>
-
-            <label for="schoolName">Student Name:</label>
-            <input type="text" id="student_id" name="student_id" required>
             
-            <label for="schoolName">Student Age / Std:</label>
-            <input type="text" id="schoolName" name="schoolName" required>
-
-            <label for="schoolName">Reason for taking the scheme:</label>
-            <input type="text" id="schoolName" name="schoolName" required>
-
             <label for="educationSection">Education:</label>
             <select id="educationSection" name="educationSection" required>
-                <option value="scheme1">Scheme 1</option>
-                <option value="scheme2">Scheme 2</option>
-                <option value="scheme3">Scheme 3</option>
-                <option value="scheme4">Scheme 4</option>
-                <option value="scheme5">Scheme 5</option>
+                <option value="scheme1">Educational 1</option>
+                <option value="scheme2">Educational 2</option>
+                <option value="scheme3">Educational 3</option>
             </select>
+            
+            <!-- <label for="schoolName">No of Students in the Educational scheme:</label> -->
+            <input type="number" id="no_of_students" name="no_of_students_ed" placeholder="Enter the number of Education Quota Students" required>
 
-            <label for="educationSection">Economical Data:</label>
+            <label for="educationSection">Economical Quota:</label>
             <select id="educationSection" name="educationSection" required>
-                <option value="scheme1">Scheme 1</option>
-                <option value="scheme2">Scheme 2</option>
-                <option value="scheme3">Scheme 3</option>
-                <option value="scheme4">Scheme 4</option>
-                <option value="scheme5">Scheme 5</option>
+                <option value="scheme1">Economical 1</option>
+                <option value="scheme2">Economical 2</option>
+                <option value="scheme3">Economical 3</option>
             </select>
+            <!-- <label for="schoolName">No of Students in the Economical scheme:</label> -->
+            <input type="number" id="no_of_students" name="no_of_students_eco" placeholder="Enter the number of Economical Quota Students" required>
 
             <label for="educationSection">Medical Quota:</label>
             <select id="educationSection" name="educationSection" required>
-                <option value="scheme1">Scheme 1</option>
-                <option value="scheme2">Scheme 2</option>
-                <option value="scheme3">Scheme 3</option>
-                <option value="scheme4">Scheme 4</option>
-                <option value="scheme5">Scheme 5</option>
-            </select>
+                <option value="scheme1">Medical 1</option>
+                <option value="scheme2">Medical 2</option>
+                <option value="scheme3">Medical 3</option>
+            
+                <!-- <label for="schoolName">No of Students in the Medical scheme:</label> -->
+            <input type="number" id="no_of_students" name="no_of_students_med" placeholder="Enter the number of Medical Quota students" required>
 
 
-            <input type="submit" value="Submit">
+            <!-- <input type="submit" value="Submit"> -->
+            <button type="submit" >Submit</button>
         </form>
-
-        <!--JS For pie chart-->
-        <div class="pie-chart-container">
-            <canvas id="studentPieChart"></canvas>
-        </div>
     </div>
-
-    <!-- Include Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <script>
         // JavaScript code for form validation and submission can be added here.
         document.getElementById('uploadForm').addEventListener('submit', function(event) {
@@ -198,37 +190,7 @@
         });
 
         // Example pie chart data (you can replace this with your own data)
-        var pieChartCanvas = document.getElementById('studentPieChart').getContext('2d');
-        var pieChartData = {
-            labels: ['Scheme 1', 'Scheme 2', 'Scheme 3', 'Scheme 4', 'Scheme 5'],
-            datasets: [{
-                data: [20, 15, 10, 25, 30], // Example data (replace with your own)
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        var pieChart = new Chart(pieChartCanvas, {
-            type: 'pie',
-            data: pieChartData,
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top'
-                },
-                title: {
-                    display: true,
-                    text: 'Student Distribution by Education Scheme'
-                }
-            }
-        });
-    </script>
+       </script>
 
     <script>
         // JavaScript code for form validation and submission can be added here.

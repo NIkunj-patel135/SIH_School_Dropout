@@ -88,7 +88,7 @@
     <div class="container">
         <h1>Pie Chart Example</h1>
         <div>
-            <label for="educationSection">School Name:</label>
+            <!-- <label for="educationSection">School Name:</label>
             <select id="educationSection" name="educationSection" required>
                 <option value="scheme1">Scheme 1</option>
                 <option value="scheme2">Scheme 2</option>
@@ -104,11 +104,20 @@
                 <option value="scheme3">Scheme 3</option>
                 <option value="scheme4">Scheme 4</option>
                 <option value="scheme5">Scheme 5</option>
-            </select>
-            <div class="container">
+            </select> -->
+            <!-- <div class="container">
                 <button class="submit-button">Submit</button>
-            </div>
+            </div> -->
+            
         </div>
+        <select  value="{{ school }}" style="display: none;" id="schoolName">fdssd</select>
+        <select style="display: none;" id="list-details">
+            
+            <option value="{{ education }}" style="display: none;">{{ education }}</option>
+            <option value="{{ economic }}" style="display: none;">{{ economic }}</option>
+            <option value="{{ medical }}" style="display: none;">{{ medical }}</option>
+            
+        </select>
         <div id="chart-container">
             <!-- Create a canvas element for the chart -->
             <canvas id="myPieChart"></canvas>
@@ -117,10 +126,17 @@
 
     <script>
         // Sample data for the pie chart
+        var list_number = [];
+        var schoolName = document.getElementById("schoolName");
+        var temp = document.getElementById("list-details");
+        list_number[0] = parseInt(temp[0].value); 
+        list_number[1] = parseInt(temp[1].value); 
+        list_number[2] = parseInt(temp[2].value); 
+        
         var data = {
-            labels: ["School Name", "District Name"],
+            labels: ["Education","Economic","Medical"],
             datasets: [{
-                data: [35, 25], // Adjust the values as needed
+                data: list_number, // Adjust the values as needed
                 backgroundColor: ["#36A2EB", "#FFCE56"], // Customize colors
             }],
         };
