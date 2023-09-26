@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import user_info,school_dropout_data
-from json import dumps
+
 
 
 
