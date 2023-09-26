@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .download-link {
+            font-size: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+
+        .pie-chart-container {
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+
+    select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff; 
+    color: #333; 
+    }
+
+
+    select option {
+    background-color: #fff; 
+    color: #333;
+    }
+
+
+    select:focus {
+    outline: none; 
+    border-color: #007bff;
+    }
+
+
+    select:hover {
+    border-color: #007bff; 
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Document Upload</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="schoolName">School ID :</label>
+            <input type="text" id="school id" name="school id" required>
+
+            <label for="schoolName">School name :</label>
+            <input type="text" id="school_name" name="school_name" required>
+
+            <label for="schoolDistrict">School District:</label>
+            <input type="text" id="schoolDistrict" name="schoolDistrict" required>
+
+            <label for="schoolName">Principal ID:</label>
+            <input type="text" id="principal_id" name="principal_id" required>
+
+            <label for="schoolName">Principal Name:</label>
+            <input type="text" id="principalname" name="principalname" required>
+
+            <label for="schoolName">Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required>
+
+            <label for="schoolName">Student Name:</label>
+            <input type="text" id="student_id" name="student_id" required>
+            
+            <label for="schoolName">Student Age / Std:</label>
+            <input type="text" id="schoolName" name="schoolName" required>
+
+            <label for="schoolName">Reason for taking the scheme:</label>
+            <input type="text" id="schoolName" name="schoolName" required>
+
+            <label for="educationSection">Education:</label>
+            <select id="educationSection" name="educationSection" required>
+                <option value="scheme1">Scheme 1</option>
+                <option value="scheme2">Scheme 2</option>
+                <option value="scheme3">Scheme 3</option>
+                <option value="scheme4">Scheme 4</option>
+                <option value="scheme5">Scheme 5</option>
+            </select>
+
+            <label for="educationSection">Economical Data:</label>
+            <select id="educationSection" name="educationSection" required>
+                <option value="scheme1">Scheme 1</option>
+                <option value="scheme2">Scheme 2</option>
+                <option value="scheme3">Scheme 3</option>
+                <option value="scheme4">Scheme 4</option>
+                <option value="scheme5">Scheme 5</option>
+            </select>
+
+            <label for="educationSection">Medical Quota:</label>
+            <select id="educationSection" name="educationSection" required>
+                <option value="scheme1">Scheme 1</option>
+                <option value="scheme2">Scheme 2</option>
+                <option value="scheme3">Scheme 3</option>
+                <option value="scheme4">Scheme 4</option>
+                <option value="scheme5">Scheme 5</option>
+            </select>
+
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <!--JS For pie chart-->
+        <div class="pie-chart-container">
+            <canvas id="studentPieChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // JavaScript code for form validation and submission can be added here.
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            // Add validation logic here if needed
+            // You can use JavaScript to check file type, size, or other custom validation
+            // You can also use AJAX to submit the form data to a server for processing
+
+            // Prevent the default form submission for this example
+            event.preventDefault();
+        });
+
+        // Example pie chart data (you can replace this with your own data)
+        var pieChartCanvas = document.getElementById('studentPieChart').getContext('2d');
+        var pieChartData = {
+            labels: ['Scheme 1', 'Scheme 2', 'Scheme 3', 'Scheme 4', 'Scheme 5'],
+            datasets: [{
+                data: [20, 15, 10, 25, 30], // Example data (replace with your own)
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: pieChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Student Distribution by Education Scheme'
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // JavaScript code for form validation and submission can be added here.
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            // Add validation logic here if needed
+            // You can use JavaScript to check file type, size, or other custom validation
+            // You can also use AJAX to submit the form data to a server for processing
+
+            // Prevent the default form submission for this example
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
+
+
