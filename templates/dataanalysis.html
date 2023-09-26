@@ -86,7 +86,13 @@
 
         <select style="display: none;" id="drop-number">
             {% for number in drop_out_number %}
-                <option value="{{ number }}" style="display: none;">{{ number }}</option>
+                <option value="{{ number }}" style="display: none;"></option>
+            {% endfor %}
+        </select>
+
+        <select style="display: none;" id="dict">
+            {% for key,value in dict.items %}
+                <option value="{{ key }}" style="display: none;">{{ value }}</option>
             {% endfor %}
         </select>
 
@@ -121,12 +127,14 @@
         var schoolNames = [];
         var districtNames = [];
         var drop_out_number = [];
+        var dict_values = {};
 
         
         var temp_names = document.getElementById("school-select");
         var temp_names2 = document.getElementById("district-select");
         var temp_num = document.getElementById("drop-number");
         var submit_button = document.getElementById("submit-button");
+        var temp_dict = document.getElementById("dict");
 
 
         for (let i = 1; i<temp_names.length ; i++) {
@@ -138,12 +146,18 @@
         }
 
         for (let index = 0; index < temp_num.length; index++) {
-            drop_out_number.push(parseInt(temp_num[index].value))            
+            drop_out_number.push(parseInt(temp_num[index].value));            
         }
+        for(let index = 0; index < temp_dict.length ; index++) {
+            dict_values[temp_dict[index].value] = String(temp_dict[index].innerHTML);
+        }
+        // console.log(dict_values["nirmal"] === String("bastar"))
+        // console.log(compareStrings(dict_values["nirmal"].toUpperCase(),"bastar".toUpperCase))
+        // console.log(typeof dict_values["nirmal"] )
+        // console.log(typeof "bastar" )
+        // console.log("bastar" === "bastar")
 
-
-
-        data = submit_button.addEventListener("click",myFun(schoolNames,districtNames,drop_out_number));
+        const data = submit_button.addEventListener("click",myFun(schoolNames,districtNames,drop_out_number));
 
         function myFun(schoolNames,tempDistrict,temp_drop_out_number) {
             var district_select = document.getElementById("district-select").value;
@@ -170,16 +184,16 @@
         console.log(drop_out_number)
         
 
-        const data = {
-            labels: schoolNames,
-            datasets: [{
-                label: "Data Analysis",
-                data: drop_out_number, // 
-                borderColor: "rgba(75, 192, 192, 1)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-                fill: true,
-            }],
-        };
+        // const data = {
+        //     labels: schoolNames,
+        //     datasets: [{
+        //         label: "Data Analysis",
+        //         data: drop_out_number, // 
+        //         borderColor: "rgba(75, 192, 192, 1)",
+        //         backgroundColor: "rgba(75, 192, 192, 0.2)",
+        //         fill: true,
+        //     }],
+        // };
 
         const ctx = document.getElementById("line-chart").getContext("2d");
         const chart = new Chart(ctx, {

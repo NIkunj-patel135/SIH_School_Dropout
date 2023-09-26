@@ -58,19 +58,22 @@ def data(request):
     school_names = []
     district_names = []
     drop_out_number = []
+    dict = {}
     objects = school_dropout_data.objects.all()
 
     for objs in objects:
         school_names.append(objs.school_name)
         district_names.append(objs.school_district)
         drop_out_number.append(objs.drop_out_number)
+        dict[objs.school_name] = objs.school_district 
     
     districtNames = list(set(district_names))
-
+    
     context = {
         'school_names' : school_names,
         'district_names' : districtNames,
-        'drop_out_number' : drop_out_number
+        'drop_out_number' : drop_out_number,
+        'dict':dict
     }
 
     
