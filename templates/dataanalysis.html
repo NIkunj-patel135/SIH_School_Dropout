@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,22 +77,18 @@
         <label for="school-select">Select School:</label>
         <select id="school-select">
             <option value="#">Select School</option>
-            <option value="school1">School 1</option>
-            <option value="school2">School 2</option>
-            <option value="school3">School 3</option>
-            <option value="school4">School 4</option>
-            <option value="school5">School 5</option>
+            {% for scName in school_names %}
+                <option value="{{ scName }}">{{ scName }}</option>
+            {% endfor %}
         </select>
 
         <!-- District Options -->
         <label for="district-select">Select District:</label>
         <select id="district-select">
             <option value="#">Select District</option>
-            <option value="district1">District 1</option>
-            <option value="district2">District 2</option>
-            <option value="district3">District 3</option>
-            <option value="district4">District 4</option>
-            <option value="district5">District 5</option>
+            {% for districtNames in district_names %}
+                <option value="{{ districtNames }}">{{ districtNames }}</option>
+            {% endfor %}
         </select>
         <label for="category-select">Select Category:</label>
         <select id="category-select">
@@ -103,20 +99,41 @@
             <option value="school">School</option>
             <option value="area">Area</option>
         </select>
-
+        <div style="display: none;" id = "hide" value="{{ drop_out_number }}"></div>
         <!-- Submit Button -->
         <button id="submit-button">Submit</button>
         <canvas id="line-chart" width="400" height="200"></canvas>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Sample data (you should replace this with your own data)
+    <script data-username = "{{ drop_out_number }}">
+        
+        
+        var schoolNames = [];
+        var districtNames = [];
+        var drop_out_number = [];
+
+        
+        var temp_names = document.getElementById("school-select");
+        var temp_names2 = document.getElementById("district-select");
+        
+        
+
+        for (let i = 1; i<temp_names.length ; i++) {
+            schoolNames.push(temp_names[i].value);
+        }
+
+        for (let i = 1; i<temp_names2.length ; i++) {
+            districtNames.push(temp_names2[i].value);
+        }
+            
+        
+
         const data = {
-            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"],
+            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"], // school names
             datasets: [{
                 label: "Data Analysis",
-                data: [12, 19, 3, 5, 2], // Replace with your data
+                data: [12, 19, 33, 5, 2], // per school data
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: true,

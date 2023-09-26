@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import user_info,school_dropout_data
+from json import dumps
 
 
 
@@ -33,22 +34,51 @@ def login_helper(request):
 
 def home(request):
     return render(request,"index.html")
+
 def about(request):
     return render(request,"about.html")
+
 def course_detail(request):
     return render(request,"course-details.html")
+
 def courses(request):
     return render(request,"courses.html")
+    
 def train(request):
     return render(request,"trainers.html")
+
 def events(request):
     return render(request,"events.html")
+
 def contact(request):
     return render(request,"contact.html")
+
+
 def data(request):
-    return render(request,"dataanalysis.html")
+    school_names = []
+    district_names = []
+    drop_out_number = []
+    objects = school_dropout_data.objects.all()
+
+    for objs in objects:
+        school_names.append(objs.school_name)
+        district_names.append(objs.school_district)
+        drop_out_number.append(objs.drop_out_number)
+    
+    districtNames = list(set(district_names))
+
+    context = {
+        'school_names' : school_names,
+        'district_names' : districtNames,
+        'drop_out_number' : drop_out_number
+    }
+
+    
+    return render(request, 'dataanalysis.html', context)
+
 def dropout(request):
     return render(request,"dropout_analysis.html")
+
 def stud_reg(request):
     return render(request,"student_registration.html")
 
