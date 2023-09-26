@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart Example</title>
+    <!-- Include the Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        /* Add some basic styles to the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Style the chart container */
+        #chart-container {
+            text-align: center;
+        }
+
+        select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff; 
+    color: #333; 
+    }
+
+
+    select option {
+    background-color: #fff; 
+    color: #333;
+    }
+
+
+    select:focus {
+    outline: none; 
+    border-color: #007bff;
+    }
+
+
+    select:hover {
+    border-color: #007bff; 
+    }
+
+    /* .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        } */
+
+        /* Style for the submit button */
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #007BFF; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            /* transition: background-color 0.3s ease; */
+        }
+
+        /* Hover effect for the button */
+        .submit-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pie Chart Example</h1>
+        <div>
+            <label for="educationSection">School Name:</label>
+            <select id="educationSection" name="educationSection" required>
+                <option value="scheme1">Scheme 1</option>
+                <option value="scheme2">Scheme 2</option>
+                <option value="scheme3">Scheme 3</option>
+                <option value="scheme4">Scheme 4</option>
+                <option value="scheme5">Scheme 5</option>
+            </select>
+
+            <label for="educationSection">District Name:</label>
+            <select id="educationSection" name="educationSection" required>
+                <option value="scheme1">Scheme 1</option>
+                <option value="scheme2">Scheme 2</option>
+                <option value="scheme3">Scheme 3</option>
+                <option value="scheme4">Scheme 4</option>
+                <option value="scheme5">Scheme 5</option>
+            </select>
+            <div class="container">
+                <button class="submit-button">Submit</button>
+            </div>
+        </div>
+        <div id="chart-container">
+            <!-- Create a canvas element for the chart -->
+            <canvas id="myPieChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for the pie chart
+        var data = {
+            labels: ["School Name", "District Name"],
+            datasets: [{
+                data: [35, 25], // Adjust the values as needed
+                backgroundColor: ["#36A2EB", "#FFCE56"], // Customize colors
+            }],
+        };
+
+        // Get the canvas element
+        var ctx = document.getElementById("myPieChart").getContext("2d");
+
+        // Create the pie chart
+        var myPieChart = new Chart(ctx, {
+            type: "pie",
+            data: data,
+        });
+    </script>
+</body>
+</html>
