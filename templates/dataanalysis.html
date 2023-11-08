@@ -79,32 +79,19 @@
             <option>Select School</option>
             {% for scName in school_names %}
                 <option value="{{ scName }}">{{ scName }}</option>
-                
             {% endfor %}
         </select>
 
-
-        <select style="display: none;" id="drop-number">
-            {% for number in drop_out_number %}
-                <option value="{{ number }}" style="display: none;"></option>
-            {% endfor %}
-        </select>
-
-        <select style="display: none;" id="dict">
-            {% for key,value in dict.items %}
-                <option value="{{ key }}" style="display: none;">{{ value }}</option>
-            {% endfor %}
-        </select>
-
+        
+        <div>
+            {{ drop_out_list|json_script:"dropout_list" }}
+        </div>
 
         <!-- District Options -->
         <label for="district-select">Select District:</label>
         <select id="district-select">
             <option value="*">Select District</option>
-            <!-- {% for districtNames in district_names %}
-                <option value="{{ districtNames }}">{{ districtNames }}</option>
-            {% endfor %} -->
-                <option value="bastar">bastar</option>
+                <option  value="baster">baster</option>
                 <option value="kanker">kanker</option>
                 <option value="raipur">raipur</option>
         </select>
@@ -118,47 +105,13 @@
             <option value="area">Area</option>
         </select>
         <div style="display: none;" id = "hide" value="{{ drop_out_number }}"></div>
-        <!-- Submit Button -->
-        <!-- <button id="submit-button">Submit</button> -->
         <canvas id="line-chart" width="400" height="200"></canvas>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script data-number = "{{ drop_out_number }}">
-        
-        
-        var schoolNames = [];
-        var districtNames = [];
-        var drop_out_number = [];
-        var dict_values = {};
+    <script>
 
-        
-        
-        
-        const temp_names2 = document.querySelector("#district-select")
-        var temp_num = document.getElementById("drop-number");
-        var submit_button = document.getElementById("submit-button");
-        
-
-        
-        console.log('bastar' == temp_names2[1].getAttribute('value'))
-
-        // for (let i = 1; i<temp_names.length ; i++) {
-        //     schoolNames.push(temp_names[i].value);
-        // }
-
-        for (let i = 1; i<temp_names2.length ; i++) {
-            districtNames.push(temp_names2[i].value);
-        }
-
-        for (let index = 0; index < temp_num.length; index++) {
-            drop_out_number.push(parseInt(temp_num[index].value));            
-        }
-        // for(let index = 0; index < temp_dict.length ; index++) {
-        //     dict_values[temp_dict[index].value] = String(temp_dict[index].innerHTML);
-        // }
-
-        // submit_button.addEventListener("click",myFun());
+        const drop_out_list = JSON.parse(document.getElementById("dropout_list").textContent);     
         const data = {
                 labels: schoolNames,
                 datasets: [{
@@ -183,98 +136,27 @@
             },
         });
 
+
         document.querySelector("#district-select").addEventListener('change', function() {
-            const selectedOption = this.value;
+        
             var district_select = document.querySelector("#district-select").value;
-            var dataNum,schoolNames;
-            if(district_select == 'bastar') {
-                schoolNames = ['nirmal','dps','vidaylaya','K.V','Govt.School'];
-                dataNum = [15,2,10,16,25];
-            }
-            else if (district_select == 'kanker') {
-                schoolNames = ['gyan ganga','christ','K.V','Govt. Primary School','ACS'];
-                dataNum = [12,4,9,26,15];
-            } else {
-                schoolNames = ['st .Xaviour','Holy hearts','Holy Cross','K.V','Govt. Primary School']
-                dataNum = [6,8,18,9,27];
-            }
+            var dataNum = [];
+            var schoolNames = [];
+            
+            drop_out_list.forEach(drop_out_element => {
+                if(drop_out_element.school_district == district_select) {
+
+                    dataNum.push(drop_out_element.drop_out_number);
+                    schoolNames.push(drop_out_element.school_name);
+                }
+            });
 
 
             chart.data.datasets[0].data = dataNum;
             chart.data.labels = schoolNames;
 
             chart.update();
-        })
-
-        function n() {
-            var district_select = document.querySelector("#district-select").value;
-            var schoolNames,dataNum;
-            if(district_select == 'bastar') {
-                schoolNames = ['nirmal','dps','vidaya'];
-                dataNum = [78,23,54];
-            }
-            else if (district_select == 'kanker') {
-                schoolNames = ['gyan ganga','christ'];
-                dataNUm = [12,80];
-            } else {
-                schoolNames = ['st .Xaviour']
-                dataNum = [20];
-            }
-            const data = {
-                labels: schoolNames,
-                datasets: [{
-                    label: "Data Analysis",
-                    data: dataNum, 
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                    fill: true,
-                }],
-        };
-    
-            
-            
-        document.getElementById("category-select").addEventListener("change", function() {
-            chart.update(); 
-        });
-    }
-
-
-
-
-        
-        
-        // const data = {
-        //     labels: schoolNames,
-        //     datasets: [{
-        //         label: "Data Analysis",
-        //         data: drop_out_number, // 
-        //         borderColor: "rgba(75, 192, 192, 1)",
-        //         backgroundColor: "rgba(75, 192, 192, 0.2)",
-        //         fill: true,
-        //     }],
-        // };
-
-        // const ctx = document.getElementById("line-chart").getContext("2d");
-        // const chart = new Chart(ctx, {
-        //     type: "line",
-        //     data,
-        //     options: {
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true,
-        //             },
-        //         },
-        //     },
-        // });
-        // Event listener to update the chart based on the selected category
-        // document.getElementById("category-select").addEventListener("change", function() {
-        // const selectedCategory = this.value;
-            // Fetch and update data based on the selected category (you'll need to implement this part)
-            // Update the 'data' object with the new data
-            // Example: data.labels = ["Category 1", "Category 2", ...];
-            // Example: data.datasets[0].data = [12, 19, ...];
-        //     chart.update(); // Update the chart with the new data
-        // });
+        })    
 
     </script>
 </body>

@@ -1,16 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 from .models import user_info,school_dropout_data,Scheme_Table
 
 
 
 
-
 # Create your views here.
-def index(request):
-    return render(request,"index.html")
 
-def login(request):
+def index(request):
+    # add three government officals ids and passwords
+    # User.objects.create_user("john", "lennon@thebeatles.com", "johnpassword")
+   return render(request,"index.html")
+
+def login_user(request):
     if(request.method == "GET"):
         return render(request,"login.html")
     if(request.method == "POST"):
@@ -26,11 +31,19 @@ def login_helper(request):
     
     userName = request.POST["userName"]
     passWord = request.POST["passWord"]
+    user = authenticate(request,username=userName,password=passWord);
+    # if( not user_info.objects.filter( user_name = userName , password = passWord ).exists() ):
+    #     return render(request,"login.html",{"error" : True})
+    if(user is not None):
+        login(request,user)
+        return redirect('home')    
+    else:
+        # messages.success(request,("There Was An Error In Login"))
+        return redirect('login')
 
-    if( not user_info.objects.filter( user_name = userName , password = passWord ).exists() ):
-        return render(request,"login.html",{"error" : True})
-    
-    return render(request,"index.html",{"login":True})
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 def pieChart(request):
     SchoolId = request.POST["school-id"]
@@ -78,29 +91,29 @@ def scheme(request):
 
 
 def data(request):
-    school_names = []
-    district_names = []
-    drop_out_number = []
-    dict = {}
-    objects = school_dropout_data.objects.all()
+    # school_names = []
+    # district_names = []
+    # drop_out_number = []
+    # dict = {}
+    # objects = school_dropout_data.objects.all()
 
-    for objs in objects:
-        school_names.append(objs.school_name)
-        district_names.append(objs.school_district)
-        drop_out_number.append(objs.drop_out_number)
-        dict[objs.school_name] = objs.school_district 
+    # for objs in objects:
+    #     school_names.append(objs.school_name)
+    #     district_names.append(objs.school_district)
+    #     drop_out_number.append(objs.drop_out_number)
+    #     dict[objs.school_name] = objs.school_district 
     
-    districtNames = list(set(district_names))
+    # districtNames = list(set(district_names))
     
-    context = {
-        'school_names' : school_names,
-        'district_names' : districtNames,
-        'drop_out_number' : drop_out_number,
-        'dict':dict
-    }
-
+    # context = {
+    #     'school_names' : school_names,
+    #     'district_names' : districtNames,
+    #     'drop_out_number' : drop_out_number,
+    #     'dict':dict
+    # }
+    content = {'drop_out_list':list(school_dropout_data.objects.values())}
     
-    return render(request, 'dataanalysis.html', context)
+    return render(request, 'dataanalysis.html', content)
 
 def dropout(request):
     return render(request,"dropout_analysis.html")

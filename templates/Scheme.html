@@ -129,7 +129,7 @@
 <body>
     <div class="container">
         <h1>Student Scheme Portal</h1>
-        <form action="Pie.html" method="post">
+        <form action="{% url 'Pie' %}" method="post">
             {% csrf_token %}
             <label for="schoolName">School ID :</label>
             <input type="text" id="school id" name="school-id" required>

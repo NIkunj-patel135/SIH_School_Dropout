@@ -44,20 +44,20 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">EKATRA</a></h1>
+      <h1 class="logo me-auto"><a href="{% url 'home' %}">EKATRA</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="home.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a class="active" href="courses.html">Services</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a class="active" href="{% url 'courses' %}">Services</a></li>
     
          
 
           
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -93,7 +93,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4>Analysis</h4>
                 </div>
-                <h3><a href="dropout_analysis.html">Dropout Analysis Report Portal</a></h3>
+                <h3><a href="{% url 'dropout_analysis' %}">Dropout Analysis Report Portal</a></h3>
                 <p>Analysis report of the students here</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
@@ -113,7 +113,7 @@
                   <h4>Schools</h4>
                 </div>
 
-                <h3><a href="student_registration.html">Schools Report Here.</a></h3>
+                <h3><a href="{% url 'student_registration' %}">Schools Report Here.</a></h3>
                 <p>The analysis report of the all the school is here.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
@@ -140,12 +140,13 @@
 
           
 
+          
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="courses.html">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'courses' %}">Services</a></li>
              
             </ul>
           </div>
