@@ -12,7 +12,7 @@ from .models import user_info,school_dropout_data,Scheme_Table
 
 def index(request):
     # add three government officals ids and passwords
-    # User.objects.create_user("john", "lennon@thebeatles.com", "johnpassword")
+   User.objects.create_user("spi", "lennon@thebeatles.com", "spi")
    return render(request,"index.html")
 
 def login_user(request):
