@@ -11,8 +11,9 @@ from .models import user_info,school_dropout_data,Scheme_Table
 # Create your views here.
 
 def index(request):
-    # add three government officals ids and passwords
-   User.objects.create_user("spi", "lennon@thebeatles.com", "spi")
+#     # add three government officals ids and passwords
+#    User.objects.create_user("spi", "lennon@thebeatles.com", "spi")
+#    User.objects.create_user("Ekatra", "lennon@hbeatles.com", "Ekatra")
    return render(request,"index.html")
 
 def login_user(request):
